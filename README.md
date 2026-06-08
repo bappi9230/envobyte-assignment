@@ -5,12 +5,14 @@
 Monica CRM uses **Label** model for contact tags. I extended the existing Label system with filtering, caching, and analytics.
 
 ### What I Built
-- `taggables` polymorphic table (supports future activities tagging)
-- `tag_category` column added to labels table
-- Full CRUD API for labels (`/api/vaults/{vaultId}/labels`)
-- AND filtering for contacts (`/api/vaults/{vaultId}/contacts?labels[]=1&labels[]=2`)
-- Redis caching with 10-minute TTL and cache invalidation
-- 4 feature tests (all passing)
+| `GET` | `/api/vaults/{vaultId}/labels` | List all labels with usage count (Redis cached) |
+| `POST` | `/api/vaults/{vaultId}/labels` | Create a new label |
+| `GET` | `/api/vaults/{vaultId}/labels/{id}` | Show a single label |
+| `PUT` | `/api/vaults/{vaultId}/labels/{id}` | Update a label |
+| `DELETE` | `/api/vaults/{vaultId}/labels/{id}` | Delete a label (detaches from all contacts) |
+| `POST` | `/api/vaults/{vaultId}/contacts/{id}/labels` | Attach labels to a contact |
+| `DELETE` | `/api/vaults/{vaultId}/contacts/{id}/labels/{labelId}` | Detach a label from a contact |
+| `GET` | `/api/vaults/{vaultId}/contacts?labels[]=1&labels[]=2` | Filter contacts by labels (AND logic) |
 
 ## Files
 
