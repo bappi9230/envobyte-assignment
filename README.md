@@ -5,15 +5,16 @@
 Monica CRM uses **Label** model for contact tags. I extended the existing Label system with filtering, caching, and analytics.
 
 ### What I Built
-| `GET` | `/api/vaults/{vaultId}/labels` | List all labels with usage count (Redis cached) |
-| `POST` | `/api/vaults/{vaultId}/labels` | Create a new label |
-| `GET` | `/api/vaults/{vaultId}/labels/{id}` | Show a single label |
-| `PUT` | `/api/vaults/{vaultId}/labels/{id}` | Update a label |
-| `DELETE` | `/api/vaults/{vaultId}/labels/{id}` | Delete a label (detaches from all contacts) |
-| `POST` | `/api/vaults/{vaultId}/contacts/{id}/labels` | Attach labels to a contact |
-| `DELETE` | `/api/vaults/{vaultId}/contacts/{id}/labels/{labelId}` | Detach a label from a contact |
-| `GET` | `/api/vaults/{vaultId}/contacts?labels[]=1&labels[]=2` | Filter contacts by labels (AND logic) |
-
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/api/tags` | List all tags with usage count (Redis cached) |
+| `POST` | `/api/tags` | Create a new tag |
+| `GET` | `/api/tags/:id` | Show a single tag |
+| `PUT` | `/api/tags/:id` | Update a tag |
+| `DELETE` | `/api/tags/:id` | Delete a tag (detaches from all contacts) |
+| `POST` | `/api/contacts/:id/tags` | Attach tags to a contact |
+| `DELETE` | `/api/contacts/:id/tags/:tagId` | Detach a tag from a contact |
+| `GET` | `/api/contacts?tags[]=1&tags[]=2` | Filter contacts by tags (AND logic) |
 ## Files
 
 | File | Description |
